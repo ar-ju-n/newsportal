@@ -1,0 +1,2 @@
+# newsportal
+Django-project
