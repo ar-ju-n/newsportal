@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>News Articles</h1>
+
+{% if news %}
+<ul>
+    {% for article in news %}
+    <li>
+        <h2><a href="{% url 'news_detail' slug=article.slug %}">{{ article.title_en }}</a></h2>
+        <p>Category: {{ article.category.name_en }}</p>
+        <p>Tags: {% for tag in article.tags.all %}{{ tag.name_en }}{% if not forloop.last %}, {% endif %}{% endfor %}
+        </p>
+        <p>Published on: {{ article.publish_date }}</p>
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No news articles available.</p>
+{% endif %}
+{% endblock %}

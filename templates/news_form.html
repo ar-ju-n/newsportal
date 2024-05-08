@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h1>{% if news %}Edit News Article{% else %}Create News Article{% endif %}</h1>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+
+    <div>
+        {{ form.title_en.errors }}
+        <label for="{{ form.title_en.id_for_label }}">News Title (English):</label>
+        {{ form.title_en }}
+    </div>
+
+    <div>
+        {{ form.title_np.errors }}
+        <label for="{{ form.title_np.id_for_label }}">News Title (Nepali):</label>
+        {{ form.title_np }}
+    </div>
+
+    <div>
+        {{ form.publish_date.errors }}
+        <label for="{{ form.publish_date.id_for_label }}">Publish Date:</label>
+        {{ form.publish_date }}
+    </div>
+
+    <div>
+        {{ form.category.errors }}
+        <label for="{{ form.category.id_for_label }}">Category:</label>
+        {{ form.category }}
+    </div>
+
+    <div>
+        {{ form.tags.errors }}
+        <label for="{{ form.tags.id_for_label }}">Tags:</label>
+        {{ form.tags }}
+    </div>
+
+    <div>
+        {{ form.description_en.errors }}
+        <label for="{{ form.description_en.id_for_label }}">Description (English):</label>
+        {{ form.description_en }}
+    </div>
+
+    <div>
+        {{ form.description_np.errors }}
+        <label for="{{ form.description_np.id_for_label }}">Description (Nepali):</label>
+        {{ form.description_np }}
+    </div>
+
+    <div>
+        {{ form.image.errors }}
+        <label for="{{ form.image.id_for_label }}">Image:</label>
+        {{ form.image }}
+    </div>
+
+    <div>
+        {{ form.status.errors }}
+        <label for="{{ form.status.id_for_label }}">Status:</label>
+        {{ form.status }}
+    </div>
+
+    <button type="submit">Save</button>
+</form>
+{% endblock %}

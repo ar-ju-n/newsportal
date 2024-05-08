@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ news.title_en }}</h1>
+<p>Category: {{ news.category.name_en }}</p>
+<p>Tags: {% for tag in news.tags.all %}{{ tag.name_en }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+<p>Published on: {{ news.publish_date }}</p>
+<p>{{ news.description_en|safe }}</p>
+
+{% if news.image %}
+<img src="{{ news.image.url }}" alt="{{ news.title_en }}">
+{% endif %}
+{% endblock %}
