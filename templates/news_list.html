@@ -3,6 +3,8 @@
 {% block content %}
 <h1>News Articles</h1>
 
+<a href="{% url 'news_create' %}" class="btn btn-primary">Create News Article</a>
+
 {% if news %}
 <ul>
     {% for article in news %}
