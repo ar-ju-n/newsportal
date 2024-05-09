@@ -9,7 +9,7 @@ class NewsAdmin(admin.ModelAdmin):
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('name_en', 'name_np', 'slug', 'status')
-    list_filter = ('status',)
+    list_filter = ('status')
     search_fields = ('name_en', 'name_np')
     prepopulated_fields = {'slug': ('name_en',)}
 

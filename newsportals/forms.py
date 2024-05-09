@@ -2,7 +2,7 @@ from django import forms
 from .models import News, Category, Tag
 
 class NewsForm(forms.ModelForm):
-    category = forms.ModelChoiceField(queryset=Category.objects.all())
+    category = forms.ModelChoiceField(queryset=Category.objects.filter(status=True))
     tags = forms.ModelMultipleChoiceField(queryset=Tag.objects.all(), widget=forms.CheckboxSelectMultiple)
 
     class Meta:

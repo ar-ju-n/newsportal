@@ -5,7 +5,7 @@ class Category(models.Model):
     name_en = models.CharField(max_length=100)
     name_np = models.CharField(max_length=100)
     slug = models.SlugField(unique=True)
-    status = models.CharField(max_length=10, choices=[('active', 'Active'), ('inactive', 'Inactive')])
+    status = models.BooleanField(default=True)  # True for active, False for inactive
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name_en)
@@ -36,7 +36,7 @@ class News(models.Model):
     description_en = models.TextField()
     description_np = models.TextField()
     image = models.ImageField(upload_to='news_images/')
-    status = models.CharField(max_length=10, choices=[('active', 'Active'), ('inactive', 'Inactive')])
+    status = models.BooleanField()  # True for active, False for inactive
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title_en)
